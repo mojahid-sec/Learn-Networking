@@ -1,0 +1,610 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-bangla: 'Hind Siliguri', 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-mono: 'Fira Code', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .font-bangla {
+    font-family: var(--font-bangla);
+  }
+
+  .font-mono-code {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Custom scrollbar with liquid glass styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.38);
+}
+
+/* ========================================================
+   THEME DEFINITIONS: 6 COMPLETE LIQUID GLASS PALETTES
+   Inspired by Apple Liquid Glass Aesthetics
+   ======================================================== */
+
+/* 1. MIDNIGHT BLUE (DEFAULT) */
+html[data-theme="midnight"],
+:root {
+  --bg-main: #030712;
+  --bg-surface: rgba(11, 21, 40, 0.62);
+  --bg-surface-elevated: rgba(15, 31, 61, 0.76);
+  --bg-surface-sunken: rgba(5, 11, 24, 0.82);
+  --border-primary: rgba(56, 189, 248, 0.18);
+  --border-subtle: rgba(56, 189, 248, 0.08);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-main: #38bdf8;
+  --accent-secondary: #60a5fa;
+  --accent-bg: rgba(56, 189, 248, 0.12);
+  --accent-border: rgba(56, 189, 248, 0.38);
+  --accent-glow: rgba(56, 189, 248, 0.25);
+  --grid-line: rgba(56, 189, 248, 0.035);
+  --header-bg: rgba(3, 7, 18, 0.72);
+  --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --glass-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(56, 189, 248, 0.08);
+  --glass-inner-bevel: inset 0 1px 0 0 rgba(255, 255, 255, 0.16);
+  --liquid-caustic-1: rgba(56, 189, 248, 0.07);
+  --liquid-caustic-2: rgba(37, 99, 235, 0.05);
+}
+
+/* 2. DARK CLASSIC */
+html[data-theme="dark"] {
+  --bg-main: #090a0f;
+  --bg-surface: rgba(18, 19, 26, 0.65);
+  --bg-surface-elevated: rgba(26, 28, 37, 0.78);
+  --bg-surface-sunken: rgba(11, 12, 18, 0.82);
+  --border-primary: rgba(255, 255, 255, 0.12);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-main: #38bdf8;
+  --accent-secondary: #3b82f6;
+  --accent-bg: rgba(56, 189, 248, 0.12);
+  --accent-border: rgba(56, 189, 248, 0.35);
+  --accent-glow: rgba(56, 189, 248, 0.22);
+  --grid-line: rgba(255, 255, 255, 0.03);
+  --header-bg: rgba(9, 10, 15, 0.72);
+  --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --glass-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.07);
+  --glass-inner-bevel: inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+  --liquid-caustic-1: rgba(255, 255, 255, 0.04);
+  --liquid-caustic-2: rgba(56, 189, 248, 0.04);
+}
+
+/* 3. LIGHT MODE */
+html[data-theme="light"] {
+  --bg-main: #f8fafc;
+  --bg-surface: rgba(255, 255, 255, 0.72);
+  --bg-surface-elevated: rgba(241, 245, 249, 0.86);
+  --bg-surface-sunken: rgba(226, 232, 240, 0.78);
+  --border-primary: rgba(2, 132, 199, 0.16);
+  --border-subtle: rgba(15, 23, 42, 0.06);
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --accent-main: #0284c7;
+  --accent-secondary: #0369a1;
+  --accent-bg: rgba(2, 132, 199, 0.08);
+  --accent-border: rgba(2, 132, 199, 0.32);
+  --accent-glow: rgba(2, 132, 199, 0.18);
+  --grid-line: rgba(15, 23, 42, 0.035);
+  --header-bg: rgba(255, 255, 255, 0.78);
+  --glass-specular: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.03);
+  --glass-shadow: 0 18px 40px -15px rgba(15, 23, 42, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.75);
+  --glass-inner-bevel: inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+  --liquid-caustic-1: rgba(2, 132, 199, 0.05);
+  --liquid-caustic-2: rgba(99, 102, 241, 0.04);
+}
+
+/* 4. CYBER RED */
+html[data-theme="cyber-red"] {
+  --bg-main: #090405;
+  --bg-surface: rgba(22, 10, 13, 0.65);
+  --bg-surface-elevated: rgba(34, 15, 20, 0.78);
+  --bg-surface-sunken: rgba(14, 5, 7, 0.82);
+  --border-primary: rgba(244, 63, 94, 0.22);
+  --border-subtle: rgba(244, 63, 94, 0.09);
+  --text-primary: #fff1f2;
+  --text-secondary: #fca5a5;
+  --text-muted: #9f1239;
+  --accent-main: #f43f5e;
+  --accent-secondary: #fb7185;
+  --accent-bg: rgba(244, 63, 94, 0.14);
+  --accent-border: rgba(244, 63, 94, 0.4);
+  --accent-glow: rgba(244, 63, 94, 0.28);
+  --grid-line: rgba(244, 63, 94, 0.04);
+  --header-bg: rgba(9, 4, 5, 0.72);
+  --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --glass-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(244, 63, 94, 0.12);
+  --glass-inner-bevel: inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+  --liquid-caustic-1: rgba(244, 63, 94, 0.08);
+  --liquid-caustic-2: rgba(159, 18, 57, 0.06);
+}
+
+/* 5. PURPLE */
+html[data-theme="purple"] {
+  --bg-main: #080411;
+  --bg-surface: rgba(20, 10, 36, 0.65);
+  --bg-surface-elevated: rgba(31, 16, 56, 0.78);
+  --bg-surface-sunken: rgba(12, 5, 26, 0.82);
+  --border-primary: rgba(168, 85, 247, 0.22);
+  --border-subtle: rgba(168, 85, 247, 0.09);
+  --text-primary: #faf5ff;
+  --text-secondary: #d8b4fe;
+  --text-muted: #9333ea;
+  --accent-main: #a855f7;
+  --accent-secondary: #c084fc;
+  --accent-bg: rgba(168, 85, 247, 0.14);
+  --accent-border: rgba(168, 85, 247, 0.4);
+  --accent-glow: rgba(168, 85, 247, 0.28);
+  --grid-line: rgba(168, 85, 247, 0.04);
+  --header-bg: rgba(8, 4, 17, 0.72);
+  --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --glass-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(168, 85, 247, 0.12);
+  --glass-inner-bevel: inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+  --liquid-caustic-1: rgba(168, 85, 247, 0.08);
+  --liquid-caustic-2: rgba(126, 34, 206, 0.06);
+}
+
+/* 6. EMERALD GREEN */
+html[data-theme="emerald"] {
+  --bg-main: #020d07;
+  --bg-surface: rgba(7, 31, 19, 0.65);
+  --bg-surface-elevated: rgba(13, 45, 28, 0.78);
+  --bg-surface-sunken: rgba(4, 20, 12, 0.82);
+  --border-primary: rgba(16, 185, 129, 0.22);
+  --border-subtle: rgba(16, 185, 129, 0.09);
+  --text-primary: #ecfdf5;
+  --text-secondary: #86efac;
+  --text-muted: #059669;
+  --accent-main: #10b981;
+  --accent-secondary: #34d399;
+  --accent-bg: rgba(16, 185, 129, 0.14);
+  --accent-border: rgba(16, 185, 129, 0.4);
+  --accent-glow: rgba(16, 185, 129, 0.28);
+  --grid-line: rgba(16, 185, 129, 0.04);
+  --header-bg: rgba(2, 13, 7, 0.72);
+  --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --glass-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(16, 185, 129, 0.12);
+  --glass-inner-bevel: inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+  --liquid-caustic-1: rgba(16, 185, 129, 0.08);
+  --liquid-caustic-2: rgba(5, 150, 105, 0.06);
+}
+
+/* 7. WATER THEME (CRYSTAL CLEAR AQUA & OCEAN REFLECTIONS) */
+html[data-theme="water"] {
+  --bg-main: #021220;
+  --bg-surface: rgba(7, 36, 62, 0.64);
+  --bg-surface-elevated: rgba(12, 53, 90, 0.78);
+  --bg-surface-sunken: rgba(3, 20, 36, 0.85);
+  --border-primary: rgba(6, 182, 212, 0.26);
+  --border-subtle: rgba(34, 211, 238, 0.12);
+  --text-primary: #f0fdfa;
+  --text-secondary: #a5f3fc;
+  --text-muted: #38bdf8;
+  --accent-main: #06b6d4;
+  --accent-secondary: #22d3ee;
+  --accent-bg: rgba(6, 182, 212, 0.16);
+  --accent-border: rgba(34, 211, 238, 0.45);
+  --accent-glow: rgba(6, 182, 212, 0.32);
+  --grid-line: rgba(34, 211, 238, 0.045);
+  --header-bg: rgba(2, 18, 32, 0.75);
+  --glass-specular: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.28), inset 0 0 0 1px rgba(34, 211, 238, 0.1);
+  --glass-shadow: 0 20px 50px -15px rgba(1, 15, 28, 0.82), 0 0 0 1px rgba(6, 182, 212, 0.16);
+  --glass-inner-bevel: inset 0 1px 0 0 rgba(255, 255, 255, 0.26);
+  --liquid-caustic-1: rgba(34, 211, 238, 0.12);
+  --liquid-caustic-2: rgba(14, 165, 233, 0.09);
+}
+
+/* ========================================================
+   GLOBAL LIQUID GLASS ENGINE (APPLE AESTHETICS)
+   ======================================================== */
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+}
+
+/* Crisp Clean Grid Pattern without dark vignette or mask-image */
+.bg-grid-pattern {
+  background-size: 44px 44px;
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+}
+
+/* Signature Liquid Glass Panel */
+.glass-panel {
+  background: var(--bg-surface);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-primary);
+  box-shadow: var(--glass-specular), var(--glass-shadow);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  background: var(--bg-surface-elevated);
+  border-color: var(--accent-border);
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.25), 0 24px 50px -15px var(--accent-glow);
+}
+
+/* Target Layout background */
+html .min-h-screen.bg-slate-950,
+html[data-theme] .min-h-screen.bg-slate-950 {
+  background-color: var(--bg-main) !important;
+}
+
+/* ========================================================
+   FROSTED LIQUID NAVBAR (SIGNATURE APPLE STATUS BAR)
+   ======================================================== */
+html header,
+html[data-theme] header {
+  background: var(--header-bg) !important;
+  border-bottom: 1px solid var(--border-primary) !important;
+  backdrop-filter: blur(24px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+  box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.35), inset 0 -1px 0 0 var(--border-subtle) !important;
+}
+
+html header .border-slate-800,
+html header .border-slate-800\/80,
+html[data-theme] header .border-slate-800,
+html[data-theme] header .border-slate-800\/80 {
+  border-color: var(--border-primary) !important;
+}
+
+/* ========================================================
+   LIQUID GLASS SURFACE & CARD ADAPTATIONS
+   ======================================================== */
+html .bg-slate-950,
+html[data-theme] .bg-slate-950 {
+  background-color: var(--bg-main) !important;
+}
+
+/* Transparent liquid glass cards */
+html .bg-slate-900,
+html .bg-slate-900\/90,
+html .bg-slate-900\/80,
+html .bg-slate-900\/60,
+html .bg-slate-950\/70,
+html .bg-slate-950\/60,
+html[data-theme] .bg-slate-900,
+html[data-theme] .bg-slate-900\/90,
+html[data-theme] .bg-slate-900\/80,
+html[data-theme] .bg-slate-900\/60,
+html[data-theme] .bg-slate-950\/70,
+html[data-theme] .bg-slate-950\/60 {
+  background-color: var(--bg-surface) !important;
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+}
+
+/* Elevated glass layers */
+html .bg-slate-800,
+html .bg-slate-800\/80,
+html .bg-slate-800\/60,
+html[data-theme] .bg-slate-800,
+html[data-theme] .bg-slate-800\/80,
+html[data-theme] .bg-slate-800\/60 {
+  background-color: var(--bg-surface-elevated) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Soft liquid glass borders */
+html .border-slate-800,
+html .border-slate-800\/80,
+html .border-slate-800\/90,
+html .border-slate-700,
+html .border-slate-700\/80,
+html[data-theme] .border-slate-800,
+html[data-theme] .border-slate-800\/80,
+html[data-theme] .border-slate-800\/90,
+html[data-theme] .border-slate-700,
+html[data-theme] .border-slate-700\/80 {
+  border-color: var(--border-primary) !important;
+}
+
+/* Subtle specular glass rim highlight on cards */
+html .rounded-3xl,
+html .rounded-2xl,
+html[data-theme] .rounded-3xl,
+html[data-theme] .rounded-2xl {
+  box-shadow: var(--glass-specular), var(--glass-shadow);
+}
+
+/* Interactive Card Hover States */
+html .hover\:border-slate-700:hover,
+html .hover\:border-cyan-500\/50:hover,
+html .hover\:border-emerald-500\/50:hover,
+html[data-theme] .hover\:border-slate-700:hover,
+html[data-theme] .hover\:border-cyan-500\/50:hover,
+html[data-theme] .hover\:border-emerald-500\/50:hover {
+  background-color: var(--bg-surface-elevated) !important;
+  border-color: var(--accent-border) !important;
+  box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.22), 0 20px 45px -12px var(--accent-glow) !important;
+}
+
+/* ========================================================
+   LIQUID GLASS BUTTONS & CTA CONTROLS
+   ======================================================== */
+
+/* Primary CTA Liquid Sheen Buttons */
+html .bg-gradient-to-r.from-cyan-500.to-blue-600,
+html .bg-cyan-500,
+html[data-theme] .bg-gradient-to-r.from-cyan-500.to-blue-600,
+html[data-theme] .bg-cyan-500 {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 100%), var(--accent-main) !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.45), 0 8px 24px -6px var(--accent-glow) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+html .bg-cyan-500:hover,
+html .bg-gradient-to-r.from-cyan-500.to-blue-600:hover,
+html[data-theme] .bg-cyan-500:hover,
+html[data-theme] .bg-gradient-to-r.from-cyan-500.to-blue-600:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.6), 0 12px 28px -6px var(--accent-glow) !important;
+}
+
+/* Glass Pill Buttons (Theme Selector, Language, Badges) */
+html button.bg-slate-900,
+html button.bg-slate-900\/90,
+html a.bg-slate-900,
+html a.bg-slate-900\/90,
+html button.bg-slate-800,
+html a.bg-slate-800,
+html[data-theme] button.bg-slate-900,
+html[data-theme] button.bg-slate-900\/90,
+html[data-theme] a.bg-slate-900,
+html[data-theme] a.bg-slate-900\/90,
+html[data-theme] button.bg-slate-800,
+html[data-theme] a.bg-slate-800 {
+  background-color: var(--bg-surface) !important;
+  backdrop-filter: blur(16px) saturate(170%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(170%) !important;
+  border-color: var(--border-primary) !important;
+  box-shadow: var(--glass-inner-bevel), 0 4px 14px -3px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html button.bg-slate-900:hover,
+html a.bg-slate-900:hover,
+html button.bg-slate-800:hover,
+html a.bg-slate-800:hover,
+html[data-theme] button.bg-slate-900:hover,
+html[data-theme] a.bg-slate-900:hover,
+html[data-theme] button.bg-slate-800:hover,
+html[data-theme] a.bg-slate-800:hover {
+  background-color: var(--bg-surface-elevated) !important;
+  border-color: var(--accent-border) !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.25), 0 6px 18px -4px var(--accent-glow);
+}
+
+/* ========================================================
+   LIQUID GLASS INPUTS, SELECTS & DROPDOWNS
+   ======================================================== */
+html input,
+html select,
+html textarea,
+html[data-theme] input,
+html[data-theme] select,
+html[data-theme] textarea {
+  background-color: var(--bg-surface-sunken) !important;
+  border-color: var(--border-primary) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.35);
+  transition: all 0.2s ease;
+}
+
+html input:focus,
+html select:focus,
+html textarea:focus,
+html[data-theme] input:focus,
+html[data-theme] select:focus,
+html[data-theme] textarea:focus {
+  border-color: var(--accent-main) !important;
+  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.25), 0 0 0 3px var(--accent-bg) !important;
+}
+
+/* Floating Glass Menus & Popovers */
+html .bg-slate-950\/95,
+html .bg-slate-950\/90,
+html[data-theme] .bg-slate-950\/95,
+html[data-theme] .bg-slate-950\/90 {
+  background-color: var(--bg-surface-elevated) !important;
+  backdrop-filter: blur(28px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+  border: 1px solid var(--border-primary) !important;
+  box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.8), var(--glass-specular) !important;
+}
+
+/* ========================================================
+   HERO 3D SHOWCASE CARDS (LIQUID GLASS ADAPTATION)
+   ======================================================== */
+#tumble-deck-showcase-container .cursor-pointer {
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  box-shadow: var(--glass-specular), var(--glass-shadow) !important;
+}
+
+/* ========================================================
+   DEVELOPER PROFILE CONTAINER (LIQUID GLASS HERO)
+   Note: Developer photograph inside is 100% UNTOUCHED
+   ======================================================== */
+html[data-theme] section.rounded-3xl.border.border-slate-800 {
+  background-color: var(--bg-surface) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  box-shadow: var(--glass-specular), 0 25px 60px -20px var(--accent-glow) !important;
+}
+
+/* ========================================================
+   THEME SPECIFIC GLASS ACCENT OVERRIDES
+   ======================================================== */
+
+/* Text overrides in Light Mode */
+html[data-theme="light"] .text-white,
+html[data-theme="light"] .text-slate-100 {
+  color: var(--text-primary) !important;
+}
+html[data-theme="light"] .text-slate-200,
+html[data-theme="light"] .text-slate-300 {
+  color: var(--text-secondary) !important;
+}
+html[data-theme="light"] .text-slate-400 {
+  color: var(--text-muted) !important;
+}
+html[data-theme="light"] .bg-slate-950\/70,
+html[data-theme="light"] .bg-slate-950\/60,
+html[data-theme="light"] .bg-slate-950\/80,
+html[data-theme="light"] .bg-slate-950\/95 {
+  background-color: var(--bg-surface-elevated) !important;
+}
+html[data-theme="light"] input,
+html[data-theme="light"] select,
+html[data-theme="light"] textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+html[data-theme="light"] .text-cyan-400,
+html[data-theme="light"] .text-cyan-300 {
+  color: #0284c7 !important;
+}
+html[data-theme="light"] .bg-cyan-500 {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 100%), #0284c7 !important;
+  color: #ffffff !important;
+}
+html[data-theme="light"] .bg-cyan-950,
+html[data-theme="light"] .bg-cyan-950\/50,
+html[data-theme="light"] .bg-cyan-950\/60,
+html[data-theme="light"] .bg-cyan-950\/80 {
+  background-color: rgba(2, 132, 199, 0.1) !important;
+}
+html[data-theme="light"] .border-cyan-800,
+html[data-theme="light"] .border-cyan-800\/40,
+html[data-theme="light"] .border-cyan-800\/60,
+html[data-theme="light"] .border-cyan-500\/30 {
+  border-color: rgba(2, 132, 199, 0.25) !important;
+}
+
+/* Theme accent overrides for Cyber Red */
+html[data-theme="cyber-red"] .text-cyan-400,
+html[data-theme="cyber-red"] .text-cyan-300 {
+  color: #fb7185 !important;
+}
+html[data-theme="cyber-red"] .bg-cyan-500,
+html[data-theme="cyber-red"] .bg-cyan-600 {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 100%), #f43f5e !important;
+}
+html[data-theme="cyber-red"] .bg-cyan-950,
+html[data-theme="cyber-red"] .bg-cyan-950\/50,
+html[data-theme="cyber-red"] .bg-cyan-950\/60,
+html[data-theme="cyber-red"] .bg-cyan-950\/80 {
+  background-color: rgba(244, 63, 94, 0.15) !important;
+}
+html[data-theme="cyber-red"] .border-cyan-800,
+html[data-theme="cyber-red"] .border-cyan-800\/40,
+html[data-theme="cyber-red"] .border-cyan-800\/60,
+html[data-theme="cyber-red"] .border-cyan-500\/30 {
+  border-color: rgba(244, 63, 94, 0.35) !important;
+}
+
+/* Theme accent overrides for Purple */
+html[data-theme="purple"] .text-cyan-400,
+html[data-theme="purple"] .text-cyan-300 {
+  color: #c084fc !important;
+}
+html[data-theme="purple"] .bg-cyan-500,
+html[data-theme="purple"] .bg-cyan-600 {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 100%), #a855f7 !important;
+}
+html[data-theme="purple"] .bg-cyan-950,
+html[data-theme="purple"] .bg-cyan-950\/50,
+html[data-theme="purple"] .bg-cyan-950\/60,
+html[data-theme="purple"] .bg-cyan-950\/80 {
+  background-color: rgba(168, 85, 247, 0.15) !important;
+}
+html[data-theme="purple"] .border-cyan-800,
+html[data-theme="purple"] .border-cyan-800\/40,
+html[data-theme="purple"] .border-cyan-800\/60,
+html[data-theme="purple"] .border-cyan-500\/30 {
+  border-color: rgba(168, 85, 247, 0.35) !important;
+}
+
+/* Theme accent overrides for Emerald */
+html[data-theme="emerald"] .text-cyan-400,
+html[data-theme="emerald"] .text-cyan-300 {
+  color: #34d399 !important;
+}
+html[data-theme="emerald"] .bg-cyan-500,
+html[data-theme="emerald"] .bg-cyan-600 {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 100%), #10b981 !important;
+}
+html[data-theme="emerald"] .bg-cyan-950,
+html[data-theme="emerald"] .bg-cyan-950\/50,
+html[data-theme="emerald"] .bg-cyan-950\/60,
+html[data-theme="emerald"] .bg-cyan-950\/80 {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+}
+html[data-theme="emerald"] .border-cyan-800,
+html[data-theme="emerald"] .border-cyan-800\/40,
+html[data-theme="emerald"] .border-cyan-800\/60,
+html[data-theme="emerald"] .border-cyan-500\/30 {
+  border-color: rgba(16, 185, 129, 0.35) !important;
+}
+
+/* Theme accent overrides for Water Theme */
+html[data-theme="water"] .text-cyan-400,
+html[data-theme="water"] .text-cyan-300 {
+  color: #22d3ee !important;
+}
+html[data-theme="water"] .bg-cyan-500,
+html[data-theme="water"] .bg-cyan-600 {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0) 100%), #06b6d4 !important;
+}
+html[data-theme="water"] .bg-cyan-950,
+html[data-theme="water"] .bg-cyan-950\/50,
+html[data-theme="water"] .bg-cyan-950\/60,
+html[data-theme="water"] .bg-cyan-950\/80 {
+  background-color: rgba(6, 182, 212, 0.18) !important;
+}
+html[data-theme="water"] .border-cyan-800,
+html[data-theme="water"] .border-cyan-800\/40,
+html[data-theme="water"] .border-cyan-800\/60,
+html[data-theme="water"] .border-cyan-500\/30 {
+  border-color: rgba(34, 211, 238, 0.4) !important;
+}

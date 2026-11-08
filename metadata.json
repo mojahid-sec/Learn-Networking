@@ -1,0 +1,6 @@
+{
+  "name": "NETCORE - Complete Computer Networking Learning Platform",
+  "description": "Premium interactive computer networking education platform featuring bilingual English and Bangla lessons, visual topology diagrams, packet flow simulations, and hands-on labs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
